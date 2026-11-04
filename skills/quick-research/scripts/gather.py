@@ -80,7 +80,7 @@ def fetch(url: str) -> dict:
         return {"url": url, "error": "本文を抜き出せなかった"}
     meta = json.loads(raw)
     # Wikipedia などの「[編集]」の行は本文ではないので外す
-    text = re.sub(r"(?m)^\s*\[(編集|edit|ソースを編集)\]\s*$\n?", "", meta.get("text") or "")
+    text = re.sub(r"(?m)^\s*\[(編集|edit|ソースを編集)( \| [^\]]+)?\]\s*$\n?", "", meta.get("text") or "")
     author = meta.get("author")
     # 典拠データなどを書き手と取り違えることがあるので、長すぎるものは捨てる
     if author and (len(author) > 60 or author.count(" ") > 5):
