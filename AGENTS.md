@@ -9,9 +9,9 @@
 
 ## プロジェクト概要
 
-`README.md`を参照。スキルの本体は`skills/quick-research/`にある。`SKILL.md`が手順、`scripts/`が本文の抽出（`gather.py`）と照合（`verify.py`）、`references/`が答えの形と信憑性の基準である。
+`README.md`を参照。スキルの本体は`skills/quick-research/`にある。`SKILL.md`が手順、`scripts/`が本文の抽出（`gather.py`）、保存モードでの出典の保存（`save_source.py`）、照合（`verify.py`）、`references/`が答えの形と信憑性の基準である。
 
-`verify.py`は標準ライブラリーだけで書く（CIで依存を入れずにテストするため）。
+`verify.py`と`save_source.py`は標準ライブラリーだけで書く。Claudeアプリの実行環境で依存を入れずに動かすため、またCIで依存を入れずにテストするため。
 
 ## コマンド
 
@@ -22,6 +22,7 @@
 | テスト（照合のスクリプト。ネットワークを使わない） | `python3 -m unittest discover -s tests -v` |
 | スクリプトの構文 | `python3 -m py_compile skills/quick-research/scripts/*.py` |
 | プラグインの設定の検証 | `claude plugin validate .` |
+| Claudeアプリ用のzipを作る | `bash scripts/build-zip.sh`（`dist/quick-research.zip`） |
 | ページの取得を手で試す | `uv run skills/quick-research/scripts/gather.py --out <作業フォルダー> --query "<検索語>" <URL>` |
 
 ## git操作

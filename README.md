@@ -16,8 +16,12 @@
 
 ## 動作環境
 
-- Claude Code（WebSearchが使えること）
-- [uv](https://docs.astral.sh/uv/)（スクリプトの依存パッケージを初回に自動で入れる）
+| 環境 | 必要なもの | ページの読み方 |
+| --- | --- | --- |
+| Claude Code | WebSearch、[uv](https://docs.astral.sh/uv/)（スクリプトの依存パッケージを初回に自動で入れる） | スクリプトでページを取り、質問に関係する段落だけをClaudeに渡す |
+| Claudeアプリ（claude.ai、デスクトップ） | コード実行とWeb検索を有効にした、Pro以上のプラン | Web検索の機能でページを読み、根拠の段落を保存してから照合する |
+
+どちらの環境でも、答えの形と、出典との照合は同じです。Claudeアプリでは、関係する段落だけを選んでClaudeが読む量を減らす処理は使えません。
 
 ## 使い方
 
@@ -27,6 +31,13 @@
 /plugin marketplace add knk1313/quick-research
 /plugin install quick-research@quick-research
 ```
+
+### Claudeアプリ
+
+1. [Releases](https://github.com/knk1313/quick-research/releases)から`quick-research.zip`を取る。手元で作るときは`bash scripts/build-zip.sh`を実行する（`dist/quick-research.zip`ができる）
+2. Claudeアプリの設定の、スキルの画面から、zipをアップロードする
+
+### 質問する
 
 入れたら、普段どおりに質問します。
 
