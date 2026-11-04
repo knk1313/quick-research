@@ -5,7 +5,7 @@
 """答えの原稿を、gather.py が保存した出典の本文と照合する。
 
 使い方:
-  uv run verify.py --answer <作業フォルダー>/answer.md --work <作業フォルダー>
+  python3 verify.py --answer <作業フォルダー>/answer.md --work <作業フォルダー>
 
 調べること:
 1. 確かめられる語（年、数値、『』の書名、英字の固有名詞、「・」でつないだカタカナの人名）が、
