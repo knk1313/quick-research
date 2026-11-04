@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# ワークフローの権限は、コードを読むことだけにする（リポジトリの既定が変わっても広がらないように）
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# アクションはタグではなくコミットのSHAで固定する。タグは作者側で付け替えられるため
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version-file: .python-version
+      - name: スクリプトの構文
+        run: python -m py_compile skills/quick-research/scripts/*.py
+      # verify.py は標準ライブラリーだけで動くので、依存を入れずにテストできる
+      - name: 照合のテスト
+        run: python -m unittest discover -s tests -v
+      - name: プラグインの設定が JSON として読めること
+        run: for f in .claude-plugin/*.json; do jq empty "$f"; done
+      - name: SKILL.md の先頭に name と description があること
+        run: |
+          f=skills/quick-research/SKILL.md
+          head -1 "$f" | grep -qx -- '---'
+          grep -q '^name: ' "$f" && grep -q '^description: ' "$f"

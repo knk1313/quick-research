@@ -1,0 +1,8 @@
+# GitHub Actions の版を、週に1回PRで届ける。
+# スクリプトの依存は各スクリプトの先頭（PEP 723）に書いてあり、uv が実行時に入れる
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
