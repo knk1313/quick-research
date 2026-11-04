@@ -1,0 +1,14 @@
+{
+  "name": "quick-research",
+  "owner": {
+    "name": "Yuta Kondo"
+  },
+  "description": "quick-research スキルを Claude Code プラグインとして配布するマーケットプレイス",
+  "plugins": [
+    {
+      "name": "quick-research",
+      "source": "./",
+      "description": "軽い知識の質問に、形と深さをそろえた答えを返し、数字・年・固有名詞を出典の本文と照合するスキル"
+    }
+  ]
+}

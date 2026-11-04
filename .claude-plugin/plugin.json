@@ -1,0 +1,9 @@
+{
+  "name": "quick-research",
+  "description": "軽い知識の質問に、形と深さをそろえた答えを返し、数字・年・固有名詞を出典の本文と照合するスキル",
+  "author": {
+    "name": "Yuta Kondo"
+  },
+  "repository": "https://github.com/knk1313/quick-research",
+  "license": "MIT"
+}
