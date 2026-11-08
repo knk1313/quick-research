@@ -44,7 +44,3 @@
 ```text
 HTTPとHTTPSの違いってなんだっけ
 ```
-
-## ライセンス
-
-[MIT](LICENSE)
